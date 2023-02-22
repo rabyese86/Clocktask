@@ -1,0 +1,29 @@
+using System;
+
+namespace AnalogClockAngle
+{
+    class AnalogClockAngle
+    {
+        static void Main(string[] args)
+        {
+            // Get input from user
+            Console.Write("Enter hours (1-12): ");
+            int hours = int.Parse(Console.ReadLine());
+            Console.Write("Enter minutes (0-59): ");
+            int minutes = int.Parse(Console.ReadLine());
+
+            // Calculate the angle between the hour and minute hands
+            double hourAngle = (hours % 12 + (double)minutes / 60) * 30;
+            double minuteAngle = minutes * 6;
+            double angle = Math.Abs(hourAngle - minuteAngle);
+            if (angle > 180)
+            {
+                angle = 360 - angle;
+            }
+
+            // Output the result
+            Console.WriteLine($"The angle between the hour and minute hands is {angle} degrees.");
+            Console.ReadKey();
+        }
+    }
+}
